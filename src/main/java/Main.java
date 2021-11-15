@@ -29,14 +29,14 @@ public class Main {
     /**
      * sendMessages method.
      * Uses a MessageGenerator to send specified number
-     * of randomly ordered Messages to a main.java.Listener.
+     * of randomly ordered Messages to a Listener.
      *
      * @param listener         Listener
      * @param messageGenerator MessageGenerator
      * @param processor        Processor
      * @param messageCount     int
      */
-    private static void sendMessages(final Listener listener,
+    public static void sendMessages(final Listener listener,
                                      final MessageGenerator messageGenerator,
                                      final Processor processor,
                                      final int messageCount) {
@@ -63,7 +63,7 @@ public class Main {
      * @return int
      */
     public static int getNumberOfMessages() {
-        System.out.println("\n------------ main.java.Message Collator ------------");
+        System.out.println("\n------------ Message Collator ------------");
         Scanner scan = new Scanner(System.in);
         int numberOfMessages;
         do {

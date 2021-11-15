@@ -18,33 +18,53 @@ public class Processor {
     /**
      * private ArrayList processedMessages
      */
-   final private ArrayList<Message> processedMessages = new ArrayList<>();
+    final private ArrayList<Message> processedMessages = new ArrayList<>();
 
     /**
      * receiveBatch method.
      * Receives batch of Messages and verifies messages are in order beginning with expected message number
      * before adding messages to processedMessages.
-     * Returns true if successful.
+     * Returns true if correct order is verified.
      * Returns false if Message batch is not in order or does not match next expected value.
      * @param batch ArrayList
      * @return boolean
      */
     public boolean receiveBatch(ArrayList<Message> batch) {
-        if (batch.get(0).getOrderNumber() != nextExpected) {
+        if (!verifyBatch(batch)) {
             return false;
         }
-        else {
+        int i = 0;
+        while (i < batch.size()) {
+            processedMessages.add(batch.get(i));
+            i++;
+            nextExpected++;
+        }
+        return true;
+    }
+
+    /**
+     * verifyBatch method.
+     * Checks for ordered delivery of batch
+     * prior to processing.
+     * @param batch
+     * @return boolean
+     */
+        public boolean verifyBatch(ArrayList<Message> batch) {
+            if (batch.get(0).getOrderNumber() != nextExpected) {
+                return false;
+            }
             int i = 0;
+            int nextPointer = nextExpected;
             while (i < batch.size()) {
-                if (nextExpected == batch.get(i).getOrderNumber()) {
-                    processedMessages.add(batch.get(i));
+                if (nextPointer == batch.get(i).getOrderNumber()) {
                     i++;
-                    nextExpected++;
+                    nextPointer++;
+                } else {
+                    return false;
                 }
             }
             return true;
         }
-    }
 
     /**
      * getProcessedMessages method.
