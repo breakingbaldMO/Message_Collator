@@ -51,7 +51,7 @@ public class Main {
         while (i < messages.size()) {
             System.out.println("Received - "
                     + messages.get(i).getOrderNumber());
-            listener.receiveMessage(messages.get(i), processor);
+            listener.receiveMessage(messages.get(i));
             listener.getBatch(processor);
             i++;
         }
@@ -64,6 +64,12 @@ public class Main {
      */
     public static int getNumberOfMessages() {
         System.out.println("\n------------ Message Collator ------------");
+        System.out.println("\nA message processing component that "
+                            + "receives N number of messages "
+                            + "numbered from 0..N, one at a time.");
+        System.out.println("\nBatches are processed once the next in "
+                            + "order message(s) has been received.");
+        System.out.println("\n------------------------------------------");
         Scanner scan = new Scanner(System.in);
         int numberOfMessages;
         do {
@@ -81,8 +87,8 @@ public class Main {
     }
 
     /**
-     * verifyMessageProcessingMessage
-     * @param processor
+     * verifyMessageProcessingMessage.
+     * @param processor Processor
      */
     public static void verifyMessageProcessingMessage(final Processor processor) {
         System.out.println("\nVerified ordered processing of "

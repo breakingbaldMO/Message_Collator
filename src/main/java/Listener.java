@@ -49,7 +49,7 @@ public class Listener {
      * In-order insertion takes O(n) time.
      * @param message Message
      */
-    public void receiveMessage(Message message, Processor processor) throws IndexOutOfBoundsException {
+    public void receiveMessage(Message message) throws IndexOutOfBoundsException {
         if (messageBuffer.size() == 0) {
             messageBuffer.add(message);
         }

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 class ProcessorTest {
@@ -14,11 +13,10 @@ class ProcessorTest {
     @Test
     @DisplayName("In Order Batch")
     void receiveBatchInOrder() {
-        Listener listener = new Listener();
         Processor processor = new Processor();
         Message message0 = new Message(0);
         Message message1 = new Message(1);
-        ArrayList<Message> batch = new ArrayList<Message>();
+        ArrayList<Message> batch = new ArrayList<>();
         batch.add(message0);
         batch.add(message1);
         Assertions.assertTrue(processor.receiveBatch(batch));
@@ -30,7 +28,7 @@ class ProcessorTest {
         Processor processor = new Processor();
         Message message0 = new Message(0);
         Message message1 = new Message(1);
-        ArrayList<Message> batch = new ArrayList<Message>();
+        ArrayList<Message> batch = new ArrayList<>();
         batch.add(message1);
         batch.add(message0);
         Assertions.assertFalse(processor.receiveBatch(batch));
@@ -44,7 +42,7 @@ class ProcessorTest {
         Message message1 = new Message(1);
         Message message2 = new Message(2);
         Message message4 = new Message(4);
-        ArrayList<Message> batch = new ArrayList<Message>();
+        ArrayList<Message> batch = new ArrayList<>();
         batch.add(message0);
         batch.add(message1);
         batch.add(message2);
@@ -65,7 +63,7 @@ class ProcessorTest {
         while (i < messages.size()) {
             System.out.println("Received - "
                     + messages.get(i).getOrderNumber());
-            listener.receiveMessage(messages.get(i), processor);
+            listener.receiveMessage(messages.get(i));
             listener.getBatch(processor);
             i++;
         }

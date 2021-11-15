@@ -17,10 +17,9 @@ class ListenerTest {
     public void shouldReceiveMessage() {
         Listener listener = new Listener();
         MessageGenerator messageGenerator = new MessageGenerator();
-        Processor processor = new Processor();
         ArrayList<Message> messages =
                 messageGenerator.generateMessages(1);
-        listener.receiveMessage(messages.get(0), processor);
+        listener.receiveMessage(messages.get(0));
         Assertions.assertFalse(listener.getMessageBuffer().isEmpty());
     }
 
@@ -28,13 +27,12 @@ class ListenerTest {
     @DisplayName("Validate Message Order")
     public void inOrderMessages() {
         Listener listener = new Listener();
-        Processor processor = new Processor();
         Message message3 = new Message(3);
         Message message2 = new Message(2);
         Message message1 = new Message(1);
-        listener.receiveMessage(message3, processor);
-        listener.receiveMessage(message2, processor);
-        listener.receiveMessage(message1, processor);
+        listener.receiveMessage(message3);
+        listener.receiveMessage(message2);
+        listener.receiveMessage(message1);
         Assertions.assertEquals(" 1 2 3", listener.getMessageBuffer());
 
     }
@@ -45,7 +43,7 @@ class ListenerTest {
         Listener listener = new Listener();
         Processor processor = new Processor();
         Message message0 = new Message(0);
-        listener.receiveMessage(message0, processor);
+        listener.receiveMessage(message0);
         listener.getBatch(processor);
         Assertions.assertEquals(" 0", processor.getProcessedMessages());
     }
@@ -55,11 +53,10 @@ class ListenerTest {
     public void throwErrorReceiveMessage() {
         Listener listener = new Listener();
         MessageGenerator messageGenerator = new MessageGenerator();
-        Processor processor = new Processor();
         ArrayList<Message> messages =
                 messageGenerator.generateMessages(-1);
         Assertions.assertThrows(RuntimeException.class, () ->
-                listener.receiveMessage(messages.get(0), processor));
+                listener.receiveMessage(messages.get(0)));
     }
 
 }
