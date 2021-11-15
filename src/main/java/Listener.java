@@ -65,7 +65,7 @@ public class Listener {
     /**
      * getBatch method.
      * Evaluates batch returned from checkStatus() and calls process()
-     * @param processor
+     * @param processor Processor
      */
     public void getBatch(Processor processor) {
         ArrayList<Message> batch = checkStatus();
@@ -99,8 +99,8 @@ public class Listener {
      */
     public String getMessageBuffer() {
         String result = "";
-        for (int i = 0; i < messageBuffer.size(); i++) {
-            result += " " + messageBuffer.get(i).getOrderNumber();
+        for (Message message : messageBuffer) {
+            result += " " + message.getOrderNumber();
         }
         return result;
     }
@@ -113,8 +113,8 @@ public class Listener {
      */
     public String getBatch(ArrayList<Message> batch) {
         String result = "";
-        for (int i = 0; i < batch.size(); i++) {
-            result += " " + batch.get(i).getOrderNumber();
+        for (Message message : batch) {
+            result += " " + message.getOrderNumber();
         }
         return result;
     }

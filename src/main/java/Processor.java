@@ -46,7 +46,7 @@ public class Processor {
      * verifyBatch method.
      * Checks for ordered delivery of batch
      * prior to processing.
-     * @param batch
+     * @param batch ArrayList
      * @return boolean
      */
         public boolean verifyBatch(ArrayList<Message> batch) {
@@ -73,8 +73,8 @@ public class Processor {
      */
     public String getProcessedMessages() {
         String result = "";
-        for (int i = 0; i < processedMessages.size(); i++) {
-            result += " " + processedMessages.get(i).getOrderNumber();
+        for (Message processedMessage : processedMessages) {
+            result += " " + processedMessage.getOrderNumber();
         }
         return result;
     }
