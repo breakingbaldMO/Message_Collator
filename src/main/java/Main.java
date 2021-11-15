@@ -48,13 +48,13 @@ public class Main {
 
         System.out.println("Sending messages ...\n");
 
-        while (i < messages.size()) {
+        do {
             System.out.println("Received - "
                     + messages.get(i).getOrderNumber());
             listener.receiveMessage(messages.get(i));
             listener.getBatch(processor);
             i++;
-        }
+        } while (i < messages.size());
     }
 
     /**
@@ -81,7 +81,7 @@ public class Main {
             numberOfMessages = scan.nextInt();
             System.out.println();
         }
-        while (numberOfMessages < 1);
+        while (numberOfMessages < 2);
 
         return numberOfMessages - 1;
     }

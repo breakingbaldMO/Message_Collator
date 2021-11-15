@@ -15,12 +15,11 @@ public class MessageGenerator {
      */
     public ArrayList<Message> generateMessages(int size) {
         ArrayList<Message> messageList = new ArrayList<>();
-
+        ArrayList<Integer> randomInts = new ArrayList<>();
         if (size < 1) {
             return messageList;
         }
 
-        ArrayList<Integer> randomInts = new ArrayList<>();
         for (int i = 0; i <= size; i++) {
             randomInts.add(i);
         }
