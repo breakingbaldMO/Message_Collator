@@ -23,7 +23,7 @@ public class Main {
         sendMessages(listener, messageGenerator,
                 processor, getNumberOfMessages());
 
-        verifyMessageProcessing(processor);
+        verifyMessageProcessingMessage(processor);
     }
 
     /**
@@ -80,7 +80,11 @@ public class Main {
         return numberOfMessages - 1;
     }
 
-    public static void verifyMessageProcessing(Processor processor) {
+    /**
+     * verifyMessageProcessingMessage
+     * @param processor
+     */
+    public static void verifyMessageProcessingMessage(final Processor processor) {
         System.out.println("\nVerified ordered processing of "
                 + processor.getProcessedMessageCount()
                 + " messages (numbered 0 to "
