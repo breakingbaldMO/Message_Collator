@@ -1,3 +1,5 @@
+package com.message_collator;
+
 /**
  * Message class.
  *
@@ -9,20 +11,20 @@ public class Message {
     /**
      * private int orderNumber
      */
-    private int orderNumber;
+    final private int orderNumber;
 
     /**
      * private String message
      */
-    private String message;
+    final private String message;
 
     /**
-     * Message constructor.
+     * com.message_collator.Message constructor.
      * @param orderNumber int
      */
     public Message(int orderNumber) {
         this.orderNumber = orderNumber;
-        this.message = "Message number #" + orderNumber;
+        this.message = "com.message_collator.Message number #" + orderNumber;
     }
 
     /**

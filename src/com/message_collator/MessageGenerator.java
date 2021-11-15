@@ -1,3 +1,5 @@
+package com.message_collator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

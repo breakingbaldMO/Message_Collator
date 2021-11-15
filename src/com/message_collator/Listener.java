@@ -1,5 +1,6 @@
+package com.message_collator;
+
 import java.util.ArrayList;
-import java.util.prefs.PreferenceChangeEvent;
 
 /**
  *Listener class: Message processing component receives numbered messages in random order
@@ -14,7 +15,7 @@ public class Listener {
      * private messageBuffer ArrayList
      * Stores incoming messages pending batch processing.
      */
-    private ArrayList<Message> messageBuffer = new ArrayList<>();
+  final private ArrayList<Message> messageBuffer;
 
     /**
      * private int next

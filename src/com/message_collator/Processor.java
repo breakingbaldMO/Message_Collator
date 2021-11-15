@@ -1,3 +1,5 @@
+package com.message_collator;
+
 import java.util.ArrayList;
 
 /**
@@ -16,7 +18,7 @@ public class Processor {
     /**
      * private ArrayList processedMessages
      */
-    private ArrayList<Message> processedMessages = new ArrayList<>();
+   final private ArrayList<Message> processedMessages = new ArrayList<>();
 
     /**
      * receiveBatch method.
