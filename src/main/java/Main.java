@@ -1,4 +1,4 @@
-package com.message_collator;
+package main.java;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * com.message_collator.Main method.
+     * Main method.
      * @param args String[]
      */
     public static void main(final String[] args) {
@@ -23,21 +23,17 @@ public class Main {
         sendMessages(listener, messageGenerator,
                 processor, getNumberOfMessages());
 
-        System.out.println("\nVerified ordered processing of "
-                + processor.getProccessedMessageCount()
-                + " messages (numbered 0 to "
-                + (processor.getProccessedMessageCount() - 1)
-                + "): " + processor.getProcessedMessages());
+        verifyMessageProcessing(processor);
     }
 
     /**
      * sendMessages method.
      * Uses a MessageGenerator to send specified number
-     * of randomly ordered Messages to a Listener.
+     * of randomly ordered Messages to a main.java.Listener.
      *
-     * @param listener         com.message_collator.Listener
-     * @param messageGenerator com.message_collator.MessageGenerator
-     * @param processor        com.message_collator.Processor
+     * @param listener         Listener
+     * @param messageGenerator MessageGenerator
+     * @param processor        Processor
      * @param messageCount     int
      */
     private static void sendMessages(final Listener listener,
@@ -56,6 +52,7 @@ public class Main {
             System.out.println("Received - "
                     + messages.get(i).getOrderNumber());
             listener.receiveMessage(messages.get(i), processor);
+            listener.getBatch(processor);
             i++;
         }
     }
@@ -66,7 +63,7 @@ public class Main {
      * @return int
      */
     public static int getNumberOfMessages() {
-        System.out.println("\n------------ Message Collator ------------");
+        System.out.println("\n------------ main.java.Message Collator ------------");
         Scanner scan = new Scanner(System.in);
         int numberOfMessages;
         do {
@@ -81,6 +78,14 @@ public class Main {
         while (numberOfMessages < 1);
 
         return numberOfMessages - 1;
+    }
+
+    public static void verifyMessageProcessing(Processor processor) {
+        System.out.println("\nVerified ordered processing of "
+                + processor.getProcessedMessageCount()
+                + " messages (numbered 0 to "
+                + (processor.getProcessedMessageCount() - 1)
+                + "): " + processor.getProcessedMessages() + "\n\n");
     }
 
 }

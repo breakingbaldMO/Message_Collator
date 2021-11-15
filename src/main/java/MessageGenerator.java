@@ -1,4 +1,4 @@
-package com.message_collator;
+package main.java;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,12 +14,18 @@ public class MessageGenerator {
      * @return ArrayList of Messages in shuffled order
      */
     public ArrayList<Message> generateMessages(int size) {
+        ArrayList<Message> messageList = new ArrayList<>();
+
+        if (size < 1) {
+            return messageList;
+        }
+
         ArrayList<Integer> randomInts = new ArrayList<>();
         for (int i = 0; i <= size; i++) {
             randomInts.add(i);
         }
         Collections.shuffle(randomInts);
-        ArrayList<Message> messageList = new ArrayList<>();
+
         for (int i = 0; i < randomInts.size(); i++) {
             Message generated = new Message(randomInts.get(i));
             messageList.add(generated);

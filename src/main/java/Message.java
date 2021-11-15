@@ -1,4 +1,4 @@
-package com.message_collator;
+package main.java;
 
 /**
  * Message class.
@@ -19,12 +19,12 @@ public class Message {
     final private String message;
 
     /**
-     * com.message_collator.Message constructor.
+     * Message constructor.
      * @param orderNumber int
      */
     public Message(int orderNumber) {
         this.orderNumber = orderNumber;
-        this.message = "com.message_collator.Message number #" + orderNumber;
+        this.message = "Message number #" + orderNumber;
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.message_collator;
+package main.java;
 
 import java.util.ArrayList;
 
@@ -59,7 +59,11 @@ public class Processor {
         return result;
     }
 
-    public int getProccessedMessageCount() {
+    /**
+     * getProcessedMessageCount method.
+     * @return int
+     */
+    public int getProcessedMessageCount() {
         return processedMessages.size();
     }
 }

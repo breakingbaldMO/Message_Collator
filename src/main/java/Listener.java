@@ -1,9 +1,9 @@
-package com.message_collator;
+package main.java;
 
 import java.util.ArrayList;
 
 /**
- *Listener class: Message processing component receives numbered messages in random order
+ * Listener class: Message processing component receives numbered messages in random order
  * and sends them to Processor in batches.
  *
  * @author elisamek
@@ -49,7 +49,7 @@ public class Listener {
      * In-order insertion takes O(n) time.
      * @param message Message
      */
-    public void receiveMessage(Message message, Processor processor) {
+    public void receiveMessage(Message message, Processor processor) throws IndexOutOfBoundsException {
         if (messageBuffer.size() == 0) {
             messageBuffer.add(message);
         }
@@ -60,6 +60,14 @@ public class Listener {
             }
             messageBuffer.add(i, message);
         }
+    }
+
+    /**
+     * getBatch method.
+     * Evaluates batch returned from checkStatus() and calls process()
+     * @param processor
+     */
+    public void getBatch(Processor processor) {
         ArrayList<Message> batch = checkStatus();
         if (batch.size() > 0) {
             process(processor, batch);
@@ -71,7 +79,7 @@ public class Listener {
      * Checks the availability to process the next message number(s).
      * @return ArrayList
      */
-    private ArrayList<Message> checkStatus() {
+    public ArrayList<Message> checkStatus() {
         ArrayList<Message> batch = new ArrayList<>();
         if (messageBuffer.get(next).getOrderNumber() == next) {
             batch.add(messageBuffer.get(next));
